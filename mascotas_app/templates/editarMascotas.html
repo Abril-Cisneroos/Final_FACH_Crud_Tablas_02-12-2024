@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<iiv class="row">
+
+<div class="col-md-4 offset-md-4">
+<!-- La targeta card -->
+<div class="card"> <!-- targeta -->
+    <div class="card-body">
+        <h2>Editar Mascotas</h2>
+        <form action="/editarMascota/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+            <div class="form-group">
+                <input type="text" id="id_mascota" name="id_mascota" class="form-control"
+                value="{{misMascotas.id_mascota}}" placeholder="ID de mascota" minLenght="1" maxLenght="100"  required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                value="{{misMascotas.txtnombre}}" placeholder="nombre" minLenght="1" maxLenght="100"  required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtespecie" name="txtespecie" class="form-control"
+                value="{{misMascotas.txtespecie}}" placeholder="categoria" max="14" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="number" id="numedad" name="numedad" class="form-control"
+                value="{{misMascotas.numedad}}" placeholder="edad" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numpeso" name="numpeso" class="form-control"
+                value="{{misMascotas.numpeso}}" placeholder="peso" max="2000" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="id_cliente" name="id_cliente" class="form-control"
+                value="{{misMascotas.id_cliente}}" placeholder="Id cliente" max="50" minLenght="1" maxLenght="10" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txthistorial" name="txthistorial" class="form-control"
+                value="{{misMascotas.txthistorial}}" placeholder="Historial" max="100" required>
+            </div>
+
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form><!--- formulario -->
+    </div>
+</div> <!-- targeta -->
+
+
+<!-- La targeta card -->
+
+</div><!-- columna -->
+
+</div><!-- La fila -->
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row"><!-- la fila -->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+        <h1> Mascotas </h1>
+    <div class="card"> <!-- targeta -->
+        <div class="card-body">
+            <form action="/registrarMascota/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+                <div class="form-group">
+                    <input type="text" id="id_mascota" name="id_mascota" class="form-control"
+                    value="{{misMascotas.id_mascota}}" placeholder="ID de mascota" minLenght="1" maxLenght="100"  required>
+                </div>
+    
+                <div class="form-group">
+                    <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                    value="{{misMascotas.txtnombre}}" placeholder="nombre" minLenght="1" maxLenght="100"  required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="txtespecie" name="txtespecie" class="form-control"
+                    value="{{misMascotas.txtespecie}}" placeholder="Especie" max="14" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="number" id="numedad" name="numedad" class="form-control"
+                    value="{{misMascotas.numedad}}" placeholder="edad" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="numpeso" name="numpeso" class="form-control"
+                    value="{{misMascotas.numpeso}}" placeholder="peso" max="2000" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="id_cliente" name="id_cliente" class="form-control"
+                    value="{{misMascotas.id_cliente}}" placeholder="Id cliente" max="50" minLenght="1" maxLenght="10" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="txthistorial" name="txthistorial" class="form-control"
+                    value="{{misMascotas.txthistorial}}" placeholder="Historial" max="100" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!--- formulario -->
+        </div>
+    </div> <!-- targeta -->
+    </div><!-- columna izquierda -->
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6"><!-- columna derecha -->
+    <h1>Listado de Mascotas</h1>
+    <img class="w-50" src="{%static "img/mascotas.jpg"%}" alt="noimg" width="400" height="400"/>
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">id_mascota</th> 
+            <th scope="col">nombre</th>
+            <th scope="col">ESPECIE</th>
+            <th scope="col">edad</th>
+            <th scope="col">peso</th>
+            <th scope="col">Id cliente</th>
+            <th scope="col">Historial</th>
+            <th colspan="2">EDITAR - BORRAR</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for m in misMascotas %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{m.id_mascota}}</td>
+                    <td>{{m.txtnombre}}</td>
+                    <td>{{m.txtespecie}}</td>
+                    <td>{{m.numedad}}</td>
+                    <td>{{m.numpeso}}</td>
+                    <td>{{m.id_cliente}}</td>
+                    <td>{{m.txthistorial}}</td>
+                    <td> <a href="seleccionarMascota/{{m.id_mascota}}" class="btn btn-info">Editar</a> </td> <!-- Falta link -->
+                    <td> <a href="borrarMascota/{{m.id_mascota}}" class="btn btn-danger">Borrar</a> </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div.table.responsive>
+    </div> <!-- columna derecha -->
+</div><!-- la fila -->
+
+
+
+{% endblock %}
