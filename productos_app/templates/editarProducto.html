@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<iiv class="row">
+
+<div class="col-md-4 offset-md-4">
+<!-- La targeta card -->
+<div class="card"> <!-- targeta -->
+    <div class="card-body">
+        <h2>Editar Sucursal</h2>
+        <form action="/editarProducto/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+            <div class="form-group">
+                <input type="text" id="id_producto" name="id_producto" class="form-control"
+                value="{{misProductos.id_producto}}" placeholder="ID de id_producto" minLenght="1" maxLenght="100"  required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                value="{{misProductos.txtnombre}}" placeholder="nombre" minLenght="1" maxLenght="100"  required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtcategoria" name="txtcategoria" class="form-control"
+                value="{{misProductos.txtcategoria}}" placeholder="categoria" max="14" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="number" id="numcantidad" name="numcantidad" class="form-control"
+                value="{{misProductos.numcantidad}}" placeholder="cantidad" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtdescripcion" name="txtdescripcion" class="form-control"
+                value="{{misProductos.numstock}}" placeholder="descripcion" max="2000" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numprecio" name="numprecio" class="form-control"
+                value="{{misProductos.numprecio}}" placeholder="Precio" max="50" minLenght="1" maxLenght="10" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtproveedor" name="txtproveedor" class="form-control"
+                value="{{misProductos.txtproveedor}}" placeholder="Proveedor" max="100" required>
+            </div>
+
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form><!--- formulario -->
+    </div>
+</div> <!-- targeta -->
+
+
+<!-- La targeta card -->
+
+</div><!-- columna -->
+
+</div><!-- La fila -->
+
+{% endblock %}
